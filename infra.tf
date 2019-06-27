@@ -60,33 +60,3 @@ resource "azurerm_storage_account" "stgid" {
     Ambiente = "Desarrollo"
   }
 }
-
-resource "azurerm_cosmosdb_account" "acdid" {
-  name                = "acdeu2${local.proyecto}${local.ambiente}"
-  location            = "${azurerm_resource_group.rgid.location}"
-  resource_group_name = "${azurerm_resource_group.rgid.name}"
-  offer_type          = "Standard"
-  kind                = "GlobalDocumentDB"
-
-  enable_automatic_failover = false
-
-  consistency_policy {
-    consistency_level       = "BoundedStaleness"
-    max_interval_in_seconds = 10
-    max_staleness_prefix    = 200
-  }
-    tags = {
-    Ambiente = "Desarrollo"
-  }
-}
-
-resource "azurerm_cdn_profile" "cdnid" {
-  name                = "cdneu2${local.proyecto}${local.ambiente}"
-  location            = "${azurerm_resource_group.rgid.location}"
-  resource_group_name = "${azurerm_resource_group.rgid.name}"
-  sku                 = "Standard_Akamai"
-
-  tags = {
-    Ambiente = "Desarrollo"
-  }
-}
