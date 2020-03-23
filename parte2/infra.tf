@@ -9,17 +9,6 @@ resource "azurerm_resource_group" "test" {
     Ambiente = "Desarrollo"
   }
 }
-resource "azurerm_storage_account" "stgid" {
-  name                     = "stgjoyapuazure"
-  resource_group_name      = "${azurerm_resource_group.test.name}"
-  location                 = "${azurerm_resource_group.test.location}"
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
-
-  tags = {
-    Ambiente = "Desarrollo"
-  }
-}
 
 resource "azurerm_app_service_plan" "main" {
   name                = "azdemojoyapu-asp"
