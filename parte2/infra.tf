@@ -2,6 +2,9 @@ provider "azurerm" {
   # whilst the `version` attribute is optional, we recommend pinning to a given version of the Provider
   features {}
 }
+terraform { 
+  backend "azurerm" {} 
+}
 resource "azurerm_resource_group" "test" {
   name     = "RG${local.alias}"
   location = "${local.region}"
